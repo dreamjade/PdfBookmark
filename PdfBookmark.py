@@ -102,8 +102,8 @@ def _writeOutlinesToPdf(outlines, output, parent):
         outline = outlines[i]
         if not type(outline)==list:
             ratio = outline['/Ratio']
-            bmTitle = (outline['/Title']).decode('UTF-8')
-            bmTitle = (u'\uFEFF'+bmTitle).encode('UTF-16-BE') # see PDF reference(version 1.7) section 3.8.1 
+            bmTitle = (outline['/Title'])
+            bmTitle = (u'\uFEFF'+bmTitle)
             bmPage = int(ratio)
             bmTop = (float)(output.getPage(0).mediaBox.getHeight())*(1-(ratio-bmPage))
             bmCur = output.addBookmark(bmTitle, bmPage, parent, None, False, False, '/FitH', bmTop)
